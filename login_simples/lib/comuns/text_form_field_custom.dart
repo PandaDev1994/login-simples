@@ -10,7 +10,6 @@ Widget textFormFieldCustom(
   IconData? icon,
   VoidCallback? callBack,
   String errorText,
-  Function (String value) function
 ) {
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -18,7 +17,6 @@ Widget textFormFieldCustom(
       vertical: 10,
     ),
     child: TextFormField(
-      onChanged:function,
       style: TextStyle(color: Colors.black),
       obscureText: showObscured ? obscured! : false,
       controller: controller,
