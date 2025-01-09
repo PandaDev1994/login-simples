@@ -9,7 +9,6 @@ Widget textFormFieldCustom(
   bool showIcon,
   IconData? icon,
   VoidCallback? callBack,
-  String errorText,
 ) {
   return Padding(
     padding: const EdgeInsets.symmetric(
