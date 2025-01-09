@@ -9,6 +9,7 @@ Widget textFormFieldCustom(
   bool showIcon,
   IconData? icon,
   VoidCallback? callBack,
+  FocusNode focusNode,
 ) {
   return Padding(
     padding: const EdgeInsets.symmetric(
@@ -16,6 +17,7 @@ Widget textFormFieldCustom(
       vertical: 10,
     ),
     child: TextFormField(
+      focusNode: focusNode,
       style: TextStyle(color: Colors.black),
       obscureText: showObscured ? obscured! : false,
       controller: controller,
