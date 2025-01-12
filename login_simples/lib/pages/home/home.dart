@@ -14,7 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isObscured = false;
 
-  final FocusNode _focusNode = FocusNode();
+  final FocusNode _loginFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
 
   final _loginController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -25,12 +26,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _focusNode.requestFocus());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loginFocusNode.requestFocus());
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    _loginFocusNode.dispose();
+    _passwordFocusNode.dispose();
     _loginController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
               false,
               null,
               null,
-              _focusNode
+              _loginFocusNode
             ),
             textFormFieldCustom(
               _passwordController,
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               true,
               isObscured ? Icons.visibility_off : Icons.visibility,
               () => toggleIcon(),
-              FocusNode(),
+              _passwordFocusNode,
             ),
             buttonCustom(
               'Entrar',
@@ -83,7 +85,7 @@ class _HomePageState extends State<HomePage> {
     if (_passwordController.text == password && _loginController.text == nome) {
       _passwordController.text = '';
       _loginController.text = '';
-      _focusNode.requestFocus();
+      _loginFocusNode.requestFocus();
       scaffoldMessenger('Bem-vindo', AppColors.success,context);
     } else {
       scaffoldMessenger('Login ou senha incorreto', AppColors.error,context);
